@@ -1,0 +1,123 @@
+# Named locations for Disaster Rescue Rover — coordinates from real map
+# Use: bash start_waypoints.sh --go "location_name"
+#      bash start_waypoints.sh --mission search_sweep
+
+locations:
+  base_camp:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+
+  # East sector
+  search_zone_a:
+    x: 6.510
+    y: -1.484
+    yaw: 0.0
+
+  search_zone_b:
+    x: 7.052
+    y: -0.418
+    yaw: 0.0
+
+  # Central area
+  search_zone_c:
+    x: 2.175
+    y: 0.468
+    yaw: 0.0
+
+  search_zone_d:
+    x: -2.413
+    y: -0.273
+    yaw: 0.0
+
+  # North sector
+  search_zone_e:
+    x: -0.516
+    y: 3.232
+    yaw: 0.0
+
+  search_zone_f:
+    x: 0.586
+    y: 5.093
+    yaw: 0.0
+
+  # South-central sector
+  search_zone_g:
+    x: -2.178
+    y: -3.273
+    yaw: 0.0
+
+  # Survivor site (near lying survivor model)
+  survivor_site_a:
+    x: -1.257
+    y: 2.961
+    yaw: 0.0
+
+  # West wing
+  search_zone_h:
+    x: -10.560
+    y: 3.702
+    yaw: 0.0
+
+  search_zone_i:
+    x: -10.072
+    y: -1.737
+    yaw: 0.0
+
+  # Hazmat zone (near barrels at -9,-6)
+  hazmat_zone_a:
+    x: -8.049
+    y: -3.742
+    yaw: 0.0
+
+  hazmat_zone_b:
+    x: -7.380
+    y: -4.519
+    yaw: 0.0
+
+# Predefined missions
+missions:
+  # Primary search — all zones
+  search_sweep:
+    - search_zone_a
+    - search_zone_b
+    - search_zone_c
+    - search_zone_d
+    - search_zone_e
+    - search_zone_f
+    - search_zone_g
+    - survivor_site_a
+    - search_zone_i
+    - hazmat_zone_a
+    - hazmat_zone_b
+    - base_camp
+
+  # Quick east + central sweep
+  quick_sweep:
+    - search_zone_a
+    - search_zone_b
+    - search_zone_c
+    - search_zone_d
+    - base_camp
+
+  # Survivor focused
+  rescue_run:
+    - survivor_site_a
+    - search_zone_e
+    - search_zone_f
+    - base_camp
+
+  # Hazmat + fire zones
+  hazard_check:
+    - hazmat_zone_a
+    - hazmat_zone_b
+    - search_zone_g
+    - base_camp
+
+  # West wing sweep
+  west_sweep:
+    - search_zone_h
+    - search_zone_i
+    - hazmat_zone_a
+    - hazmat_zone_b
+    - base_camp

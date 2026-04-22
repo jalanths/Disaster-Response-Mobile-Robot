@@ -1,0 +1,35 @@
+# ROS2 build artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Claude local settings
+.claude/
+
+# Model weights (re-downloadable)
+yolov8n.pt
+
+# SLAM serialized data (large binaries)
+mymapserial.posegraph
+mymapserial.data
+
+# Generated reports / graphviz output
+reports/
+*.gv
+
+# Env
+.env

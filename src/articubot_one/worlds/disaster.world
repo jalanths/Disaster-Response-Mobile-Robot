@@ -1,0 +1,371 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="disaster_rescue">
+
+    <!-- Gazebo ROS state plugin -->
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/gazebo</namespace>
+      </ros>
+      <update_rate>10.0</update_rate>
+    </plugin>
+
+    <!-- Dim emergency lighting -->
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.5 0.4 0.3 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Ground Plane (dusty grey) -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>50 50</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>50 50</size></plane></geometry>
+          <material><ambient>0.35 0.32 0.28 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== COLLAPSED BUILDING OUTER WALLS ========== -->
+    <model name="wall_north">
+      <static>true</static>
+      <pose>0 10 1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>24 0.3 2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>24 0.3 2</size></box></geometry>
+          <material><ambient>0.45 0.42 0.38 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="wall_south">
+      <static>true</static>
+      <pose>0 -10 1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>24 0.3 2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>24 0.3 2</size></box></geometry>
+          <material><ambient>0.45 0.42 0.38 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="wall_east">
+      <static>true</static>
+      <pose>12 0 1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.3 20 2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.3 20 2</size></box></geometry>
+          <material><ambient>0.45 0.42 0.38 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="wall_west">
+      <static>true</static>
+      <pose>-12 0 1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.3 20 2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.3 20 2</size></box></geometry>
+          <material><ambient>0.45 0.42 0.38 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <!-- ========== INTERIOR COLLAPSED WALLS / RUBBLE BARRIERS ========== -->
+    <model name="rubble_wall_1">
+      <static>true</static>
+      <pose>-6 3 0.5 0 0.15 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>4 0.4 1.0</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>4 0.4 1.0</size></box></geometry>
+          <material><ambient>0.4 0.38 0.34 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="rubble_wall_2">
+      <static>true</static>
+      <pose>3 -5 0.4 0 0.08 0.3</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>5 0.4 0.8</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>5 0.4 0.8</size></box></geometry>
+          <material><ambient>0.4 0.38 0.34 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="rubble_wall_3">
+      <static>true</static>
+      <pose>7 5 0.4 0.1 0 1.57</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>3 0.4 0.8</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>3 0.4 0.8</size></box></geometry>
+          <material><ambient>0.4 0.38 0.34 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <!-- ========== FALLEN CONCRETE SLABS ========== -->
+    <model name="slab_1">
+      <static>true</static>
+      <pose>-8 6 0.1 0.3 0 0.5</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>2.5 1.5 0.2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>2.5 1.5 0.2</size></box></geometry>
+          <material><ambient>0.5 0.48 0.44 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="slab_2">
+      <static>true</static>
+      <pose>5 7 0.1 0 0.2 1.1</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>3 1.2 0.2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>3 1.2 0.2</size></box></geometry>
+          <material><ambient>0.5 0.48 0.44 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="slab_3">
+      <static>true</static>
+      <pose>-3 -8 0.1 0.15 0 0.8</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>2 1.8 0.2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>2 1.8 0.2</size></box></geometry>
+          <material><ambient>0.5 0.48 0.44 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <!-- ========== FIRE ZONES (glowing red-orange + point light) ========== -->
+    <model name="fire_zone_1">
+      <static>true</static>
+      <pose>-6 -3 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>1.0 1.0 0.6</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>1.0 1.0 0.6</size></box></geometry>
+          <material>
+            <ambient>1.0 0.3 0.0 1</ambient>
+            <diffuse>1.0 0.2 0.0 1</diffuse>
+            <emissive>0.9 0.2 0.0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <light name="fire_glow_1" type="point">
+      <pose>-6 -3 1.5 0 0 0</pose>
+      <diffuse>1.0 0.4 0.0 1</diffuse>
+      <specular>0.5 0.2 0.0 1</specular>
+      <attenuation>
+        <range>6</range>
+        <linear>0.2</linear>
+        <quadratic>0.05</quadratic>
+      </attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+    <model name="fire_zone_2">
+      <static>true</static>
+      <pose>8 3 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.8 0.8 0.6</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.8 0.8 0.6</size></box></geometry>
+          <material>
+            <ambient>1.0 0.3 0.0 1</ambient>
+            <diffuse>1.0 0.2 0.0 1</diffuse>
+            <emissive>0.9 0.2 0.0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <light name="fire_glow_2" type="point">
+      <pose>8 3 1.5 0 0 0</pose>
+      <diffuse>1.0 0.4 0.0 1</diffuse>
+      <specular>0.5 0.2 0.0 1</specular>
+      <attenuation>
+        <range>6</range>
+        <linear>0.2</linear>
+        <quadratic>0.05</quadratic>
+      </attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+    <!-- ========== HAZMAT BARRELS (real 3D mesh) ========== -->
+    <include>
+      <name>hazmat_barrel_1</name>
+      <uri>model://construction_barrel</uri>
+      <pose>4 8 0 0 0 0</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>hazmat_barrel_2</name>
+      <uri>model://construction_barrel</uri>
+      <pose>-9 -6 0 0 0 0.5</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>hazmat_barrel_3</name>
+      <uri>model://construction_barrel</uri>
+      <pose>-8.5 -5.5 0 0 0 0</pose>
+      <static>true</static>
+    </include>
+
+    <!-- ========== FALLEN STEEL BEAMS (near fire zones) ========== -->
+    <model name="beam_1">
+      <static>true</static>
+      <pose>-5.5 -2 0.1 0 0.1 0.5</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>3.5 0.2 0.2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>3.5 0.2 0.2</size></box></geometry>
+          <material><ambient>0.25 0.25 0.25 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="beam_2">
+      <static>true</static>
+      <pose>7.5 3.5 0.1 0 0.08 1.2</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>4.0 0.2 0.2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>4.0 0.2 0.2</size></box></geometry>
+          <material><ambient>0.25 0.25 0.25 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="beam_3">
+      <static>true</static>
+      <pose>-8 5 0.1 0.1 0 0.8</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>3.0 0.2 0.2</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>3.0 0.2 0.2</size></box></geometry>
+          <material><ambient>0.25 0.25 0.25 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <!-- ========== BROKEN PILLAR STUMPS (collapsed columns) ========== -->
+    <model name="pillar_1">
+      <static>true</static>
+      <pose>-4 2 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.3</radius><length>0.8</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.3</radius><length>0.8</length></cylinder></geometry>
+          <material><ambient>0.5 0.48 0.44 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="pillar_2">
+      <static>true</static>
+      <pose>4 -2 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.3</radius><length>0.8</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.3</radius><length>0.8</length></cylinder></geometry>
+          <material><ambient>0.5 0.48 0.44 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <model name="pillar_3">
+      <static>true</static>
+      <pose>6 7 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.3</radius><length>0.8</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.3</radius><length>0.8</length></cylinder></geometry>
+          <material><ambient>0.5 0.48 0.44 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <!-- ========== CINDER BLOCK DEBRIS CLUSTERS ========== -->
+    <include>
+      <name>cinder_1</name>
+      <uri>model://cinder_block</uri>
+      <pose>2 -3 0 0 0 0.4</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>cinder_2</name>
+      <uri>model://cinder_block</uri>
+      <pose>2.5 -3.3 0 0 0 1.1</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>cinder_3</name>
+      <uri>model://cinder_block</uri>
+      <pose>1.8 -2.6 0 0 0 0.7</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>cinder_4</name>
+      <uri>model://cinder_block</uri>
+      <pose>-7 2 0 0 0 1.1</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>cinder_5</name>
+      <uri>model://cinder_block</uri>
+      <pose>-7.4 2.4 0 0 0 0.3</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>cinder_6</name>
+      <uri>model://cinder_block</uri>
+      <pose>5 -6 0 0 0 0.7</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>cinder_7</name>
+      <uri>model://cinder_block</uri>
+      <pose>5.4 -6.3 0 0 0 2.0</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <name>cinder_8</name>
+      <uri>model://cinder_block</uri>
+      <pose>4.7 -5.6 0 0 0 1.4</pose>
+      <static>true</static>
+    </include>
+
+    <!-- ========== SURVIVOR — STANDING (real person mesh) ========== -->
+    <include>
+      <name>survivor_standing</name>
+      <uri>model://person_standing</uri>
+      <pose>9 -5 0 0 0 3.14</pose>
+      <static>true</static>
+    </include>
+
+    <!-- ========== SURVIVOR — LYING (injured/unconscious) ========== -->
+    <include>
+      <name>survivor_lying</name>
+      <uri>model://person_standing</uri>
+      <pose>-5 -7 0 -1.5707 0 0</pose>
+      <static>true</static>
+    </include>
+
+    <!-- ========== BASE CAMP MARKER (visual only, no collision) ========== -->
+    <model name="base_camp_marker">
+      <static>true</static>
+      <pose>0 0 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual"><geometry><box><size>1.0 1.0 0.002</size></box></geometry>
+          <material><ambient>0.0 0.8 0.0 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <!-- Physics -->
+    <physics type="ode">
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+
+  </world>
+</sdf>

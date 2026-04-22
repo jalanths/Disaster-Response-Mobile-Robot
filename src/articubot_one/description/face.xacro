@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <joint name="face_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="face_link"/>
+        <origin xyz="${chassis_length} 0 ${chassis_height/2}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="face_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.002"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+    </link>
+
+    <gazebo reference="face_link">
+        <ambient>0.5 0.5 0.5 1</ambient>
+        <diffuse>0.7 0.7 0.7 1</diffuse>
+        <specular>1.0 1.0 1.0 1</specular>
+        <emissive>0 0 0 1</emissive>
+    </gazebo>
+
+
+</robot>

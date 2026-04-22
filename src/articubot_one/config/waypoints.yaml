@@ -1,0 +1,41 @@
+# Waypoints in map frame for the obstacles world
+# Captured using Publish Point in RViz
+waypoints:
+  - name: "waypoint_1"
+    x: -2.607
+    y: 4.101
+    yaw: 0.0
+  - name: "waypoint_2"
+    x: -5.261
+    y: 2.053
+    yaw: 0.0
+  - name: "waypoint_3"
+    x: -4.361
+    y: -4.828
+    yaw: 0.0
+  - name: "waypoint_4"
+    x: 1.661
+    y: -4.763
+    yaw: 0.0
+  - name: "waypoint_5"
+    x: -2.563
+    y: -0.938
+    yaw: 0.0
+  - name: "waypoint_6"
+    x: 1.163
+    y: -1.187
+    yaw: 0.0
+  - name: "waypoint_7"
+    x: -4.394
+    y: -0.970
+    yaw: 0.0
+  - name: "waypoint_8"
+    x: -1.664
+    y: 1.219
+    yaw: 0.0
+  - name: "waypoint_9"
+    x: 1.282
+    y: 1.240
+    yaw: 0.0
+
+loop: false   # set to true to repeat waypoints continuously
