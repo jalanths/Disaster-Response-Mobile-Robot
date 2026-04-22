@@ -32,7 +32,6 @@ reports/
 *.gv
 tf_frames.pdf
 frames_*.pdf
-warehouse_map.*
 
 # Env
 .env

@@ -4,7 +4,7 @@ A ROS 2 autonomous mobile robot for disaster-zone response, built on Gazebo simu
 
 ## Features
 
-- **SLAM & Localization** — online async SLAM (slam_toolbox) and AMCL localization against a pre-built disaster/warehouse map
+- **SLAM & Localization** — online async SLAM (slam_toolbox) and AMCL localization in a custom Gazebo disaster world
 - **Autonomous Navigation** — Nav2 stack with waypoint missions (e.g. `search_sweep`)
 - **Object Detection** — YOLOv8 (`yolov8n.pt`) on the robot's camera feed
 - **Anomaly Detection** — flags unexpected scene content with configurable confidence threshold
@@ -24,7 +24,7 @@ A ROS 2 autonomous mobile robot for disaster-zone response, built on Gazebo simu
 ├── launch_all.sh             # brings up the full stack in separate terminals
 ├── kill_all.sh               # tears everything down
 ├── start_*.sh                # individual component launchers
-├── disaster_map.{pgm,yaml}   # pre-built disaster map
+├── disaster_map.{pgm,yaml}   # disaster map generated from the custom world
 ├── map_republish.py          # republish map on /map topic
 └── save_map.sh               # persist the current SLAM map
 ```
