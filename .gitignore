@@ -27,9 +27,12 @@ yolov8n.pt
 mymapserial.posegraph
 mymapserial.data
 
-# Generated reports / graphviz output
+# Generated reports / graphviz output / TF debug
 reports/
 *.gv
+tf_frames.pdf
+frames_*.pdf
+warehouse_map.*
 
 # Env
 .env

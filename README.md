@@ -25,7 +25,6 @@ A ROS 2 autonomous mobile robot for disaster-zone response, built on Gazebo simu
 ├── kill_all.sh               # tears everything down
 ├── start_*.sh                # individual component launchers
 ├── disaster_map.{pgm,yaml}   # pre-built disaster map
-├── warehouse_map.{pgm,yaml}  # alternate warehouse map
 ├── map_republish.py          # republish map on /map topic
 └── save_map.sh               # persist the current SLAM map
 ```
